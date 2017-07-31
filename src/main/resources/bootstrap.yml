@@ -1,22 +1,13 @@
 spring:
+  profiles: development
   application:
     name: user-service
+server:
+  port: 8762
 ---
 spring:
-  profiles: docker
-  cloud:
-    config:
-      uri: http://config-service:8888
----
-spring:
-  profiles: default
-  cloud:
-    config:
-      uri: http://localhost:8888
-spring.profiles.active: development
----
-spring:
-  profiles: cloud
-  cloud:
-    config:
-      uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}
+  profiles: production
+  application:
+    name: user-service
+server:
+  port: 8762
